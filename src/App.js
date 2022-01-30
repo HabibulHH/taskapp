@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
 import "./App.css";
-import TaskList from "./components/TaskList";
+import TodoContainer from "./components/TodoContainer";
 function App() {
   return (
     <div className="App">
-      <TaskList />
+      <TodoContainer />
     </div>
   );
 }

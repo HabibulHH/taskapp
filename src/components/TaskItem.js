@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import useAddItem from "../hooks/useAddItem";
+import useTodoItemList from "../hooks/useTodoItemList";
 const TaskItemContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -14,7 +14,7 @@ function TaskItem({ name, status }) {
       <div>{status === 1 ? "done" : "undone"}</div>
       <div>
         <button onClick={() => {}}>Edit</button>
-        <button onClick={() => {}}>Delete</button>
+        <button>Delete</button>
       </div>
     </TaskItemContainer>
   );
