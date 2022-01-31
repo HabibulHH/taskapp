@@ -8,7 +8,8 @@ import styled from "styled-components";
 const Container = styled.div`
   margin-top: 10px;
   display: grid;
-  justify-content: center;
+  margin-left: 10%;
+  margin-right: 10%;
 `;
 function TaskList(props) {
   const { tasks } = useSelector((state) => state.taskStore);
