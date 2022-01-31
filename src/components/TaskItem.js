@@ -6,7 +6,7 @@ import { removeTask, selectTaskToBeEdited } from "../redux/action";
 
 const TaskItemContainer = styled.div`
   display: grid;
-  padding: 10px;
+  padding-top: 10px;
   grid-template-columns: 1fr 1fr 1fr;
 `;
 
@@ -27,6 +27,10 @@ const DeleteButton = styled.button`
   color: white;
   box-shadow: rgb(0 0 0 / 15%) 1.95px 1.95px 2.6px;
 `;
+
+const ActionButtonGroup = styled.div`
+  justify-self: self-end;
+`;
 function TaskItem({ item }) {
   const dispatch = useDispatch();
 
@@ -34,7 +38,7 @@ function TaskItem({ item }) {
     <TaskItemContainer>
       <div>{item.name}</div>
       <div>{item.status === 1 ? "done" : "undone"}</div>
-      <div>
+      <ActionButtonGroup>
         <EditButton
           onClick={() => {
             dispatch(selectTaskToBeEdited(item));
@@ -49,7 +53,7 @@ function TaskItem({ item }) {
         >
           Delete
         </DeleteButton>
-      </div>
+      </ActionButtonGroup>
     </TaskItemContainer>
   );
 }

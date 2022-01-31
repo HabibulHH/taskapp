@@ -14,6 +14,7 @@ const Container = styled.div`
   grid-template-columns: 1fr 1fr;
   justify-items: left;
   height: 40px;
+  margin-bottom: 15px;
 `;
 const Button = styled.button`
   background: #ff9c08;
