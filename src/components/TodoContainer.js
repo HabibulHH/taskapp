@@ -16,9 +16,13 @@ function TaskList(props) {
     <Container>
       <EntryForm />
       {tasks &&
-        tasks.map((item, index) => {
-          return <TaskItem item={item} />;
-        })}
+        tasks
+          .sort(function (a, b) {
+            return new Date(b.date) - new Date(a.date);
+          })
+          .map((item, index) => {
+            return <TaskItem item={item} />;
+          })}
     </Container>
   );
 }
