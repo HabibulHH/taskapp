@@ -1,23 +1,41 @@
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import React, { useState } from "react";
-import { addTask } from "../redux/action";
-import { useDispatch } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-
+import { addTask, update } from "../redux/action";
 const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   justify-items: left;
+  height: 40px;
 `;
 const Button = styled.button`
   background: #ff9c08;
+  width: 100px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  border: none;
 `;
 
 function EntryForm() {
+  const { selectedItem } = useSelector((state) => state.taskStore);
   const [todo, setTodo] = useState("");
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (selectedItem) {
+      setTodo(selectedItem.name);
+    } else {
+      setTodo("");
+    }
+  }, [selectedItem]);
+
   const handleSubmit = () => {
-    if (todo !== "") {
+    if (selectedItem) {
+      selectedItem.name = todo;
+      dispatch(update(selectedItem));
+    } else if (todo !== "") {
       dispatch(
         addTask({
           name: todo,
@@ -39,7 +57,7 @@ function EntryForm() {
         }}
         className="todo"
       />
-      <Button onClick={handleSubmit}>save</Button>
+      <Button onClick={handleSubmit}>{selectedItem ? "Update" : "Save"}</Button>
     </Container>
   );
 }
