@@ -1,4 +1,4 @@
-import { ADD, DECREMENT, INCREMENT } from "./action.constants";
+import { ADD, REMOVE } from "./action.constants";
 
 const INITIAL_STATE = {
   count: 0,
@@ -7,22 +7,15 @@ const INITIAL_STATE = {
 
 const reducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case INCREMENT:
-      return {
-        ...state,
-        count: state.count + 1,
-      };
-
-    case DECREMENT:
-      return {
-        ...state,
-        count: state.count - 1,
-      };
-
     case ADD:
       return {
         ...state,
-        tasks: [...this.state.tasks, action.payload],
+        tasks: [...state.tasks, action.payload],
+      };
+    case REMOVE:
+      return {
+        ...state,
+        tasks: [state.tasks.filter((element) => element !== action.payload)],
       };
 
     default:

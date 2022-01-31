@@ -1,26 +1,23 @@
 import React from "react";
 import { useSelector } from "react-redux";
-function TaskList(props) {
-  // const taskItemList = useTodoItemList([{ name: "hira add", status: "1" }]);
-  // const [todo, setTodo, resetTodo] = useTextInput("");
+import TaskItem from "./TaskItem";
+import EntryForm from "./EntryForm";
 
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  //   if (todo === "") return;
-  //   taskItemList.addItem(todo);
-  //   resetTodo();
-  // };
-  const counter = useSelector((state) => state.counter);
+function TaskList(props) {
+  const { tasks } = useSelector((state) => state.taskStore);
   return (
     <>
-      {/* <input id="todo" className="todo-input" onChange={setTodo} value={todo} />
-      <button onClick={handleClick}>save</button> */}
-      <div>{counter.tasks.length}</div>
-      {/* {taskItemList.TaskList.map((item) => {
+      <EntryForm />
+      {tasks.map((item, index) => {
         return (
-          <TaskItem key={item.name} name={item.name} status={item.status} />
+          <TaskItem
+            key={item.name}
+            name={item.name}
+            id={index + 1}
+            status={item.status}
+          />
         );
-      })} */}
+      })}
     </>
   );
 }

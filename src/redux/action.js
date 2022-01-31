@@ -1,20 +1,14 @@
-import { DECREMENT, INCREMENT } from "./action.constants";
-
-export const increaseCounter = () => {
-  return {
-    type: INCREMENT,
-  };
-};
-
-export const decreaseCounter = () => {
-  return {
-    type: DECREMENT,
-  };
-};
+import { ADD, REMOVE } from "./action.constants";
 
 export const addTask = (task) => {
   return {
-    type: DECREMENT,
+    type: ADD,
     payload: task,
+  };
+};
+export const removeTask = (taskId) => {
+  return {
+    type: REMOVE,
+    payload: taskId,
   };
 };

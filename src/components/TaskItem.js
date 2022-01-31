@@ -1,20 +1,29 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import useTodoItemList from "../hooks/useTodoItemList";
+import { removeTask } from "../redux/action";
+import { useDispatch } from "react-redux";
+
 const TaskItemContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
 `;
 
-function TaskItem({ name, status }) {
+function TaskItem({ name, status, id }) {
+  const dispatcher = useDispatch();
   return (
     <TaskItemContainer>
       <div>{name}</div>
       <div>{status === 1 ? "done" : "undone"}</div>
       <div>
         <button onClick={() => {}}>Edit</button>
-        <button>Delete</button>
+        <button
+          onClick={() => {
+            dispatcher(removeTask(id));
+          }}
+        >
+          Delete
+        </button>
       </div>
     </TaskItemContainer>
   );
