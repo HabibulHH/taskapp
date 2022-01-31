@@ -3,6 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
 import { addTask, update } from "../redux/action";
+
+const Input = styled.input`
+  font-size: 17px;
+  width: 90%;
+  color: #666464;
+`;
 const Container = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -16,6 +22,7 @@ const Button = styled.button`
   font-size: 15px;
   font-weight: 600;
   border: none;
+  justify-self: self-end;
 `;
 
 function EntryForm() {
@@ -49,9 +56,10 @@ function EntryForm() {
   };
   return (
     <Container>
-      <input
+      <Input
         id="todo"
         value={todo}
+        placeholder="Enter a task"
         onChange={(e) => {
           setTodo(e.currentTarget.value);
         }}
