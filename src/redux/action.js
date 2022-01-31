@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT } from "./action.constants";
+import { DECREMENT, INCREMENT } from "./action.constants";
 
 export const increaseCounter = () => {
   return {
@@ -9,5 +9,12 @@ export const increaseCounter = () => {
 export const decreaseCounter = () => {
   return {
     type: DECREMENT,
+  };
+};
+
+export const addTask = (task) => {
+  return {
+    type: DECREMENT,
+    payload: task,
   };
 };
